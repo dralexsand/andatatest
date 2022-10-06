@@ -3,6 +3,7 @@ Get from git:
 ```
 git clone https://github.com/dralexsand/andatatest.git
 cd andatatest
+cp env.example .env
 sudo chown -R $USER:$USER .
 docker-compose up --build -d
 docker exec andatatest_php composer install
