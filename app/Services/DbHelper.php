@@ -6,7 +6,6 @@ namespace App\Services;
 use App\Core\DB;
 use App\Databases\Migration;
 use PDO;
-use PDOStatement;
 
 class DbHelper
 {
@@ -71,7 +70,6 @@ class DbHelper
 
         $rowDataArray = $dataTable['data'];
         $values = self::buildSqlPhrase($table, $rowDataArray);
-        //$values = implode(',', $valuesRow) . ";";
         $sql .= " VALUES {$values}";
 
         return $sql;
@@ -79,8 +77,6 @@ class DbHelper
 
     public static function executeQuery(string $sql)
     {
-        //return self::getConnect()->query($sql);
-
         $stmt = self::getConnect()->query($sql);
         $rows = [];
 

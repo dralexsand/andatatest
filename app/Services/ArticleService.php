@@ -24,7 +24,11 @@ class ArticleService
         $this->comment = new Comment();
     }
 
-    public function storeCommentData(array $commentData)
+    /**
+     * @param array $commentData
+     * @return array|string
+     */
+    public function storeCommentData(array $commentData): array|string
     {
         $userValidate = (new UserCreateRequest($commentData))->validate();
 
@@ -60,7 +64,12 @@ class ArticleService
         return $commentData;
     }
 
-    public function getCommentsWithUsersSort($sortByName = 'ASC', $sortByDate = 'DESC'): array
+    /**
+     * @param string $sortByName
+     * @param string $sortByDate
+     * @return array
+     */
+    public function getCommentsWithUsersSort(string $sortByName = 'ASC', string $sortByDate = 'DESC'): array
     {
         $sql = "
         SELECT comments.id, comments.comment, comments.created_at, comments.user_id, 
@@ -72,6 +81,10 @@ class ArticleService
         return DbHelper::executeQuery($sql);
     }
 
+    /**
+     * @param $commentData
+     * @return string
+     */
     public function getCommentView($commentData): string
     {
         return "<div class='card' style='width: 36rem;'>
@@ -92,7 +105,11 @@ class ArticleService
                </div>";
     }
 
-    public function sortCommentsView($sortData)
+    /**
+     * @param array $sortData
+     * @return string
+     */
+    public function sortCommentsView(array $sortData): string
     {
         $sortByName = $sortData['sortByName'];
         $sortByDate = $sortData['sortByDate'];
@@ -107,7 +124,11 @@ class ArticleService
         return $output;
     }
 
-    public function getSampleArticle($count = 5)
+    /**
+     * @param int $count
+     * @return string
+     */
+    public function getSampleArticle(int $count = 5): string
     {
         $row = [];
 

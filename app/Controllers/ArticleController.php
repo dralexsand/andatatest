@@ -5,7 +5,6 @@ namespace App\Controllers;
 
 
 use App\Requests\CommentUserCreateRequest;
-use App\Requests\UserUpdateRequest;
 use App\Services\ArticleService;
 
 class ArticleController extends BaseController

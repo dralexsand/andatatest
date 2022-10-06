@@ -17,7 +17,6 @@ class SeederService
     public function seedDataTable(array $dataTable): void
     {
         $sql = DbHelper::buildMultiInsertSql($dataTable);
-        $req = DbHelper::executeQuery($sql);
-        $t= 1;
+        DbHelper::executeQuery($sql);
     }
 }
